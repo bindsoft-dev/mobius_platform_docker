@@ -3,6 +3,7 @@ services:
 
   db:
     image: mysql:5.7
+    platform: linux/amd64
     container_name: mobius-db
     command: --default-authentication-plugin=mysql_native_password
     restart: always
@@ -15,7 +16,7 @@ services:
     volumes:
       - ./Mobius/mobius/mobiusdb.sql:/docker-entrypoint-initdb.d/mobiusdb.sql
     healthcheck:  # 서비스 헬스체크
-      test: ["CMD", "mysqladmin", "--password=bindsoft", "ping"]
+      test: ["CMD", "mysqladmin", "ping"]
       interval: 20s
       timeout: 20s
       retries: 5
@@ -47,7 +48,7 @@ services:
     ports:
       - "1883:1883"
     volumes:
-      - ./etc/mosquitto:/mosquitto/config  # 설정 파일 마운트 (읽기 전용)
+      - ./mosquitto/config:/mosquitto/config  # 설정 파일 마운트 (읽기 전용)
       - ./var/log/mosquitto:/var/log/mosquitto:rw
     depends_on:
       db:
