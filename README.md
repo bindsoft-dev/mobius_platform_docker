@@ -7,7 +7,7 @@
 ## Mobius 프로젝트를 정상 실행하기 위한 수정 및 실행 절차 정리
 
 ### 수정해야 하는 파일 및 내용
-- #### Mobius/conf.json
+- #### Mobius/conf.json (dbpass를 바꾸면 yml파일의 pw도 바꿔줘야 함)
     - 변경 전
         ```bash
         {
