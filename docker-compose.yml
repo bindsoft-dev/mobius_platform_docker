@@ -40,7 +40,7 @@ services:
       db:
         condition: service_healthy  # DB 서비스가 헬시 상태일 때만 실행
     networks:
-      - mobius-net  # 사용자 정의 네트워크에 연결
+      - mobius-net
 
   mqtt:
     image: eclipse-mosquitto:latest
@@ -54,7 +54,7 @@ services:
       db:
         condition: service_healthy
     networks:
-      - mobius-net  # 사용자 정의 네트워크에 연결
+      - mobius-net
 
   device-simulator:
     build: ./device-simulator
@@ -68,7 +68,7 @@ services:
     ports:
       - "8369:8369"
     networks:
-      - mobius-net  # 사용자 정의 네트워크에 연결
+      - mobius-net
 
 networks:
   mobius-net:  # 컨테이너 간 통신을 위한 사용자 정의 브리지 네트워크
